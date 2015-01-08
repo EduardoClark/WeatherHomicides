@@ -1,0 +1,17 @@
+{
+    "contents" : "##############################################\n## Author: Eduardo Clark\n## Title: Homicides and temperature in Mexico\n## Date: January 2015\n##############################################\n\n#Load Libraries\nrequire(plyr)\nrequire(dplyr)\nrequire(lubridate)\nrequire(rgdal)\nrequire(ggplot2)\nrequire(reshape2)\nrequire(MASS)\nrequire(texreg)\nrequire(qcc)\nrequire(lme4)\nrequire(glmmADMB)\nrequire(aods3)\n",
+    "created" : 1420675059601.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1405932430",
+    "id" : "DC199AB3",
+    "lastKnownWriteTime" : 1420675099,
+    "path" : "~/D4D/Homicidios-Temp/src/loadLibraries.R",
+    "project_path" : "src/loadLibraries.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
