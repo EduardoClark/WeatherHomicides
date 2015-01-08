@@ -7,8 +7,15 @@
 #Load Data
 Panel <- read.csv("data-out/WeatherHomicidePanel.csv", stringsAsFactors=FALSE)
 
+##Test for overdispersion to choose between Poisson or NegBin
+S1 <- glm.nb(Homicides ~ TMedia + as.factor(Year) + as.factor(Month) + DayOfTheWeek + as.factor(metro_area),  data = Panel)## NegBin
+S1.1 <- update(S1, . ~ . - TMedia)
+anova(S1, S1.1)
+S1B <- glm(Homicides ~ TMedia + as.factor(Year) + as.factor(Month) + DayOfTheWeek + as.factor(metro_area), family = "poisson", data = Panel)## Poisson
+pchisq(2 * (logLik(S1) - logLik(S1B)), df = 1, lower.tail = FALSE)
+
 ##Modeling Simpĺe Modeling with Mean, Max and Min temperatuares
-S1 <- glm(Homicides ~ TMedia + as.factor(Year) + as.factor(Month) + DayOfTheWeek + as.factor(metro_area), family = "poisson", data = Panel)## Poisson
+S1 <- glm.nb(Homicides ~ TMedia + as.factor(Year) + as.factor(Month) + DayOfTheWeek + as.factor(metro_area),  data = Panel)## NegBin
 S2 <- glm(Homicides ~ TMax + as.factor(Year) + as.factor(Month) + DayOfTheWeek + as.factor(metro_area), family = "poisson", data = Panel)## Poisson
 S3 <- glm(Homicides ~ TMin + as.factor(Year) + as.factor(Month) + DayOfTheWeek + as.factor(metro_area), family = "poisson", data = Panel)## Poisson
 
